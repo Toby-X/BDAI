@@ -1,0 +1,38 @@
+\documentclass{ctexart}
+\usepackage{geometry}
+\usepackage{diagbox}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{xfrac}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{titlesec}
+\usepackage{bm}
+\usepackage{caption}
+\title{基于LSTM的风力系统上网功率预测}
+\author{未央-能动02\quad 徐智昱\quad 2020012991}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+    在双碳目标下，根据历史数据对风电机未来一段时间内的运行状况结合其它设施进行调峰具有重大意义。本研究采用实际获得的风电机组一个月的运行数据
+    与当地一个月的风力数据，进行未来1小时每15分钟一个点的功率预测。风电机的功率与当地风速有着紧密关系，而风速与风功率也有明显的自回归现象，
+    因此考虑能够考虑这种自回归与相关性的模型进行建模。循环神经网络(RNN)就是这样一种方法，本研究采用了长短期记忆网络(LSTM)对风功率的预测进行了研究，
+    并通过调整参数试图找到较为适合的模型。同时，也考虑利用传统的时间序列分析(TSA)的方法对此数据进行考量，比较经典方法与现代方法之间效果的差异。
+\end{abstract}
+\textbf{关键词：} TSA, RNN, LSTM
+\section{引言}
+\subsection{数据描述与预处理}
+获得的风电数据来自江苏的风电场，包含风速与风功率两组变量，在2015/10/1 0:00到2015/10/31 23:59被采集，每30秒采集一次数据，
+内有一系列缺失数据。根据国家标准，需要对未来1个小时的4个，每个间隔15分钟的点进行预测，因此将数据集每15个点进行合并，可以借此作出散点图
+与时序图。
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.80\textwidth]{photos/original_time_series.png}
+    \caption{原始数据时序图}
+\end{figure}
+\end{document}
